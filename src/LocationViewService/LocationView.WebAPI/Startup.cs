@@ -1,7 +1,9 @@
+using LocationView.Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,6 +30,11 @@ namespace LocationView.WebAPI
         {
 
             services.AddControllers();
+
+            services.AddEntityFrameworkNpgsql()
+                    .AddDbContext<LocationViewDbContext>(opt => opt
+                    .UseNpgsql(Configuration.GetConnectionString("LocationViewConection")));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LocationView.WebAPI", Version = "v1" });
