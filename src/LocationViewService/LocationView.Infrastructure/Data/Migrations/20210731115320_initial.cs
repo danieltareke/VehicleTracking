@@ -17,7 +17,7 @@ namespace LocationView.Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     device_id = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
-                    plate_no = table.Column<DateTime>(type: "timestamp without time zone", maxLength: 30, nullable: false),
+                    plate_no = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: true),
                     registration_time = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>

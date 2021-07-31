@@ -23,12 +23,13 @@ namespace Registration.Infrastructure.Data.Migrations
             modelBuilder.Entity("Registration.Core.Domain.DeviceRegistration", b =>
                 {
                     b.Property<string>("DeviceId")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)")
                         .HasColumnName("device_id");
 
                     b.Property<DateTime>("RegistrationTime")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("registration_time");
 
                     b.HasKey("DeviceId");
 

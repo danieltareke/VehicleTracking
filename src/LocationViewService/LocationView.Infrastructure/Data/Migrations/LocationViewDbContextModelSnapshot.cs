@@ -31,9 +31,9 @@ namespace LocationView.Infrastructure.Data.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("registration_time");
 
-                    b.Property<DateTime>("VehiclePlateNo")
+                    b.Property<string>("VehiclePlateNo")
                         .HasMaxLength(30)
-                        .HasColumnType("timestamp without time zone")
+                        .HasColumnType("character varying(30)")
                         .HasColumnName("plate_no");
 
                     b.HasKey("DeviceId");

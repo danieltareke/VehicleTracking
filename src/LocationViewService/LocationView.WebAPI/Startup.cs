@@ -1,4 +1,6 @@
+using LocationView.Core.Interfaces;
 using LocationView.Infrastructure.Data;
+using LocationView.Infrastructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +41,9 @@ namespace LocationView.WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LocationView.WebAPI", Version = "v1" });
             });
+
+            // Adding the Unit of work to the DI container
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

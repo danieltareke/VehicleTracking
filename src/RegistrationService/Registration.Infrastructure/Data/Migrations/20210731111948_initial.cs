@@ -15,8 +15,8 @@ namespace Registration.Infrastructure.Data.Migrations
                 schema: "vts",
                 columns: table => new
                 {
-                    device_id = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    RegistrationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                    device_id = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    registration_time = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {

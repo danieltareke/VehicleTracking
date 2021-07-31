@@ -8,6 +8,7 @@ namespace Registration.Core.Domain
 {
     public class DeviceRegistration
     {
+        
         //ID that comes from the device
         public string DeviceId { get; set; }
         //auto capture date by system

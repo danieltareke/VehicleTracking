@@ -8,7 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Registration.Core.Interfaces;
 using Registration.Infrastructure.Data;
+using Registration.Infrastructure.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +41,9 @@ namespace Registration.WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Registration.WebAPI", Version = "v1" });
             });
+
+            // Adding the Unit of work to the DI container
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LocationView.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(LocationViewDbContext))]
-    [Migration("20210730200720_initial")]
+    [Migration("20210731115320_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,9 +33,9 @@ namespace LocationView.Infrastructure.Data.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("registration_time");
 
-                    b.Property<DateTime>("VehiclePlateNo")
+                    b.Property<string>("VehiclePlateNo")
                         .HasMaxLength(30)
-                        .HasColumnType("timestamp without time zone")
+                        .HasColumnType("character varying(30)")
                         .HasColumnName("plate_no");
 
                     b.HasKey("DeviceId");
