@@ -1,6 +1,6 @@
 using System;
 
-namespace LocationView.WebAPI
+namespace ApiGateway
 {
     public class WeatherForecast
     {

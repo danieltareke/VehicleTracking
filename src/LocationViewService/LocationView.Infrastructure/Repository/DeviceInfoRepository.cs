@@ -34,6 +34,14 @@ namespace LocationView.Infrastructure.Repository
             }
         }
 
+        public async Task<DeviceInfo> GetByDeviceId(string id)
+        {
+            var device = await dbSet.Where(x => x.DeviceId ==id)
+                                                       .FirstOrDefaultAsync();
+
+            return device;
+        }
+
         public override async Task<bool> Upsert(DeviceInfo entity)
         {
             try

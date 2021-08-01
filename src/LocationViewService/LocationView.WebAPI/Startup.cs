@@ -1,20 +1,15 @@
 using LocationView.Core.Interfaces;
 using LocationView.Infrastructure.Data;
 using LocationView.Infrastructure.Repository;
+using LocationView.WebAPI.MassTransit;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LocationView.WebAPI
 {
@@ -44,6 +39,28 @@ namespace LocationView.WebAPI
 
             // Adding the Unit of work to the DI container
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddMassTransit(config => {
+
+                config.AddConsumer<LocationConsumer>();
+                config.AddConsumer<RegistrationConsumer>();
+
+                config.UsingRabbitMq((ctx, cfg) => {
+                    cfg.Host("amqp://guest:guest@localhost:5672");
+
+                    cfg.ReceiveEndpoint("location-queue", c => {
+                        c.ConfigureConsumer<LocationConsumer>(ctx);
+                    });
+
+                    cfg.ReceiveEndpoint("registration-queue", c => {
+                        c.ConfigureConsumer<RegistrationConsumer>(ctx);
+                    });
+                });
+            });
+
+            services.AddMassTransitHostedService();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

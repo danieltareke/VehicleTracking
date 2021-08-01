@@ -13,23 +13,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LocationUpdateService", "Lo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LocationViewService", "LocationViewService", "{F0E10D30-4078-44C5-8BAC-099BF5A3C3AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationUpdate.Core", "src\LocationUpdateService\LocationUpdate.Core\LocationUpdate.Core.csproj", "{69AC751B-5AC3-42A7-B2E7-C201B625A9AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationUpdate.Core", "src\LocationUpdateService\LocationUpdate.Core\LocationUpdate.Core.csproj", "{69AC751B-5AC3-42A7-B2E7-C201B625A9AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationUpdate.Infrastructure", "src\LocationUpdateService\LocationUpdate.Infrastructure\LocationUpdate.Infrastructure.csproj", "{7F519198-07D0-4C88-88E1-5FFECC2AC507}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationUpdate.Infrastructure", "src\LocationUpdateService\LocationUpdate.Infrastructure\LocationUpdate.Infrastructure.csproj", "{7F519198-07D0-4C88-88E1-5FFECC2AC507}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationView.Infrastructure", "src\LocationViewService\LocationView.Infrastructure\LocationView.Infrastructure.csproj", "{CCD1647A-84FF-4AD3-BF5B-0019178608A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationView.Infrastructure", "src\LocationViewService\LocationView.Infrastructure\LocationView.Infrastructure.csproj", "{CCD1647A-84FF-4AD3-BF5B-0019178608A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registration.Infrastructure", "src\RegistrationService\Registration.Infrastructure\Registration.Infrastructure.csproj", "{E868A8BB-1516-4815-9A21-F530D525D165}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Registration.Infrastructure", "src\RegistrationService\Registration.Infrastructure\Registration.Infrastructure.csproj", "{E868A8BB-1516-4815-9A21-F530D525D165}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registration.Core", "src\RegistrationService\Registration.Core\Registration.Core.csproj", "{9E475427-8D84-4C98-A4F1-3A747A0E6C20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Registration.Core", "src\RegistrationService\Registration.Core\Registration.Core.csproj", "{9E475427-8D84-4C98-A4F1-3A747A0E6C20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationView.Core", "src\LocationViewService\LocationView.Core\LocationView.Core.csproj", "{E70D4A37-FB37-44E5-942A-19F9D600E5C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationView.Core", "src\LocationViewService\LocationView.Core\LocationView.Core.csproj", "{E70D4A37-FB37-44E5-942A-19F9D600E5C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationUpdate.WebAPI", "src\LocationUpdateService\LocationUpdate.WebAPI\LocationUpdate.WebAPI.csproj", "{085D6177-4D3B-4170-AC5A-E761815FA311}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationUpdate.WebAPI", "src\LocationUpdateService\LocationUpdate.WebAPI\LocationUpdate.WebAPI.csproj", "{085D6177-4D3B-4170-AC5A-E761815FA311}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationView.WebAPI", "src\LocationViewService\LocationView.WebAPI\LocationView.WebAPI.csproj", "{B979635D-7587-4E40-B6AB-634F7311CE60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationView.WebAPI", "src\LocationViewService\LocationView.WebAPI\LocationView.WebAPI.csproj", "{B979635D-7587-4E40-B6AB-634F7311CE60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registration.WebAPI", "src\RegistrationService\Registration.WebAPI\Registration.WebAPI.csproj", "{84C2448D-CBB5-436B-8E32-36FABF69B0C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Registration.WebAPI", "src\RegistrationService\Registration.WebAPI\Registration.WebAPI.csproj", "{84C2448D-CBB5-436B-8E32-36FABF69B0C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageModel", "src\MessageModel\MessageModel.csproj", "{28FF6B4D-44C3-4867-AAA2-4F92EF75C4AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{84C2448D-CBB5-436B-8E32-36FABF69B0C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84C2448D-CBB5-436B-8E32-36FABF69B0C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84C2448D-CBB5-436B-8E32-36FABF69B0C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28FF6B4D-44C3-4867-AAA2-4F92EF75C4AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28FF6B4D-44C3-4867-AAA2-4F92EF75C4AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28FF6B4D-44C3-4867-AAA2-4F92EF75C4AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28FF6B4D-44C3-4867-AAA2-4F92EF75C4AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{085D6177-4D3B-4170-AC5A-E761815FA311} = {D5461E58-624B-4414-B21D-3D2236594B91}
 		{B979635D-7587-4E40-B6AB-634F7311CE60} = {F0E10D30-4078-44C5-8BAC-099BF5A3C3AB}
 		{84C2448D-CBB5-436B-8E32-36FABF69B0C7} = {14A1574B-9A24-4612-8C91-895329BA4F09}
+		{28FF6B4D-44C3-4867-AAA2-4F92EF75C4AF} = {482178A3-0012-4954-AA2B-32F4795691A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A159F0CE-5F2B-4576-B507-CA6B9A03072B}

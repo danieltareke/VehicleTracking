@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MassTransit;
+using MessageModel;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Registration.Core.Domain;
 using Registration.Core.Interfaces;
@@ -17,71 +19,44 @@ namespace Registration.WebAPI.Controllers
     {
         private readonly ILogger<RegistrationController> _logger;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IPublishEndpoint _publishEndpoint;
 
         public RegistrationController(
             ILogger<RegistrationController> logger,
-            IUnitOfWork unitOfWork
+            IUnitOfWork unitOfWork,
+            IPublishEndpoint publishEndpoint
         )
         {
             _logger = logger;
             _unitOfWork = unitOfWork;
+            _publishEndpoint = publishEndpoint;
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser(DeviceRegistration device)
+        public async Task<IActionResult> RegisterDevice(DeviceRegistration registration)
         {
             if (ModelState.IsValid)
             {          
-                await _unitOfWork.Devices.Add(device);
+                await _unitOfWork.Devices.Add(registration);
                 await _unitOfWork.CompleteAsync();
 
-                return Ok(device);
-                //return CreatedAtAction("GetItem", new { device.DeviceId }, device);
+                //publish to mass transit
+                Device device = new Device
+                {
+                    DeviceId = registration.DeviceId,
+                    VehiclePlateNo = "",
+                    RegistrationTime=registration.RegistrationTime
+
+                };
+
+                await _publishEndpoint.Publish<Device>(device);
+
+                return Ok(registration);
             }
 
             return new JsonResult("Something went wrong") { StatusCode = 500 };
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetItem(Guid id)
-        {
-            var user = await _unitOfWork.Devices.GetById(id);
-
-            if (user == null)
-                return NotFound(); // 404 http status code 
-
-            return Ok(user);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            var users = await _unitOfWork.Devices.All();
-
-            return Ok(users);
-        }
-
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> UpdateItem(DeviceRegistration device)
-        {
-            await _unitOfWork.Devices.Upsert(device);
-            await _unitOfWork.CompleteAsync();
-
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteItem(Guid id)
-        {
-            var item = await _unitOfWork.Devices.GetById(id);
-
-            if (item == null)
-                return BadRequest();
-
-            await _unitOfWork.Devices.Delete(id);
-            await _unitOfWork.CompleteAsync();
-
-            return Ok(item);
-        }
+       
     }
 }

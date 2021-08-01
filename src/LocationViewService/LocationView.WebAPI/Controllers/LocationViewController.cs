@@ -27,61 +27,30 @@ namespace LocationView.WebAPI.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateUser(DeviceInfo device)
+        
+
+        
+
+        [HttpGet]
+        //[Route("[action]/{devices}")]
+        [Route("[action]")]
+        public async Task<IActionResult> GetDevices()
         {
-            if (ModelState.IsValid)
-            {          
-                await _unitOfWork.Devices.Add(device);
-                await _unitOfWork.CompleteAsync();
+            var devices = await _unitOfWork.Devices.All();
 
-                return Ok(device);
-                //return CreatedAtAction("GetItem", new { device.DeviceId }, device);
-            }
-
-            return new JsonResult("Something went wrong") { StatusCode = 500 };
-        }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetItem(Guid id)
-        {
-            var user = await _unitOfWork.Devices.GetById(id);
-
-            if (user == null)
-                return NotFound(); // 404 http status code 
-
-            return Ok(user);
+            return Ok(devices);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        //[Route("[action]/{locations}")]
+        [Route("[action]")]
+        public async Task<IActionResult> GetLocations()
         {
-            var users = await _unitOfWork.Devices.All();
+            var locations = await _unitOfWork.Locations.All();
 
-            return Ok(users);
+            return Ok(locations);
         }
 
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> UpdateItem(DeviceInfo device)
-        {
-            await _unitOfWork.Devices.Upsert(device);
-            await _unitOfWork.CompleteAsync();
 
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteItem(Guid id)
-        {
-            var item = await _unitOfWork.Devices.GetById(id);
-
-            if (item == null)
-                return BadRequest();
-
-            await _unitOfWork.Devices.Delete(id);
-            await _unitOfWork.CompleteAsync();
-
-            return Ok(item);
-        }
     }
 }

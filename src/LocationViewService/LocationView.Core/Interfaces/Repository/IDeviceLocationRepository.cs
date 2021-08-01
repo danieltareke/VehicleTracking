@@ -9,5 +9,6 @@ namespace LocationView.Core.Interfaces.Repository
 {
     public interface IDeviceLocationRepository : IGenericRepository<DeviceLocation>
     {
+        
     }
 }

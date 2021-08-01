@@ -16,7 +16,7 @@ namespace LocationView.Infrastructure.Repository
         private readonly ILogger _logger;
 
         public IDeviceInfoRepository Devices { get; private set; }
-        public IDeviceLocationRepository Locations { get; }
+        public IDeviceLocationRepository Locations { get; private set; }
 
         public UnitOfWork(
             LocationViewDbContext context,
@@ -27,6 +27,7 @@ namespace LocationView.Infrastructure.Repository
             _logger = loggerFactory.CreateLogger("logs");
 
             Devices = new DeviceInfoRepository(_context, _logger);
+            Locations = new DeviceLocationRepository(_context, _logger);
         }
 
         public async Task CompleteAsync()

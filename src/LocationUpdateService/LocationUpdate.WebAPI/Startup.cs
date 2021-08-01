@@ -1,16 +1,10 @@
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LocationUpdate.WebAPI
 {
@@ -32,6 +26,16 @@ namespace LocationUpdate.WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LocationUpdate.WebAPI", Version = "v1" });
             });
+
+            services.AddMassTransit(config => {
+                config.UsingRabbitMq((ctx, cfg) => {
+                    cfg.Host("amqp://guest:guest@localhost:5672");
+                });
+            });
+
+            services.AddMassTransitHostedService();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

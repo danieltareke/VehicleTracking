@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\MessageModel\MessageModel.csproj" />
     <ProjectReference Include="..\Registration.Infrastructure\Registration.Infrastructure.csproj" />
   </ItemGroup>
 
