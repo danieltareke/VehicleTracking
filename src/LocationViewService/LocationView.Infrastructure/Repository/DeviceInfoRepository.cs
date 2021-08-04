@@ -21,49 +21,15 @@ namespace LocationView.Infrastructure.Repository
 
         }
 
-        public override async Task<IEnumerable<DeviceInfo>> All()
-        {
-            try
-            {
-                return await dbSet.ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "{Repo} All method error", typeof(DeviceInfoRepository));
-                return new List<DeviceInfo>();
-            }
-        }
-
+ 
         public async Task<DeviceInfo> GetByDeviceId(string id)
         {
             var device = await dbSet.Where(x => x.DeviceId ==id)
-                                                       .FirstOrDefaultAsync();
-
+                                                       .FirstOrDefaultAsync();            
             return device;
         }
 
-        public override async Task<bool> Upsert(DeviceInfo entity)
-        {
-            try
-            {
-                var device = await dbSet.Where(x => x.DeviceId == entity.DeviceId)
-                                                        .FirstOrDefaultAsync();
-
-                if (device == null)
-                    return await Add(entity);
-
-                device.DeviceId = entity.DeviceId;
-                device.VehiclePlateNo = entity.VehiclePlateNo;
-                device.RegistrationTime = entity.RegistrationTime;
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "{Repo} Upsert method error", typeof(DeviceInfoRepository));
-                return false;
-            }
-        }
+       
 
         
     }

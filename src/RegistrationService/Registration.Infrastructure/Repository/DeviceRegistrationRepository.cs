@@ -56,6 +56,11 @@ namespace Registration.Infrastructure.Repository
             }
         }
 
-        
+        public async Task<DeviceRegistration> GetByDeviceId(string id)
+        {
+            var device = await dbSet.Where(x => x.DeviceId == id)
+                                                       .FirstOrDefaultAsync();
+            return device;
+        }
     }
 }

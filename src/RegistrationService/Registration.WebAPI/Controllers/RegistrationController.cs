@@ -33,10 +33,19 @@ namespace Registration.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Route("[action]")]
         public async Task<IActionResult> RegisterDevice(DeviceRegistration registration)
         {
+            //set registration time of devices
+            registration.RegistrationTime = DateTime.Now;
+
             if (ModelState.IsValid)
-            {          
+            {
+                //check to avoid duplicate registration
+                var deviceExisits = await _unitOfWork.Devices.GetByDeviceId(registration.DeviceId);
+                if(deviceExisits!=null)
+                    return Ok(registration);
+
                 await _unitOfWork.Devices.Add(registration);
                 await _unitOfWork.CompleteAsync();
 
@@ -54,7 +63,7 @@ namespace Registration.WebAPI.Controllers
                 return Ok(registration);
             }
 
-            return new JsonResult("Something went wrong") { StatusCode = 500 };
+            return new JsonResult("Data is not complete") { StatusCode = 500 };
         }
 
        

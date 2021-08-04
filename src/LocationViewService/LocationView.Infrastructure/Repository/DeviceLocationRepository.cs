@@ -21,43 +21,22 @@ namespace LocationView.Infrastructure.Repository
 
         }
 
-        public override async Task<IEnumerable<DeviceLocation>> All()
-        {
-            try
-            {
-                return await dbSet.ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "{Repo} All method error", typeof(DeviceLocationRepository));
-                return new List<DeviceLocation>();
-            }
-        }
-
-        public override async Task<bool> Upsert(DeviceLocation entity)
-        {
-            try
-            {
-                var device = await dbSet.Where(x => x.DeviceLocationId == entity.DeviceLocationId)
-                                                        .FirstOrDefaultAsync();
-
-                if (device == null)
-                    return await Add(entity);
-
-                device.DeviceId = entity.DeviceId;
-                device.TimeStamp = entity.TimeStamp;
-                device.Latitude = entity.Latitude;
-                device.Longitude = entity.Longitude;
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "{Repo} Upsert method error", typeof(DeviceLocationRepository));
-                return false;
-            }
-        }
-
         
+        public async Task<DeviceLocation> GetDeviceCurrentLocation(string id)
+        {
+            var currentLocation = await dbSet.Where(x => x.DeviceId == id)
+                                    .OrderByDescending(x=>x.DeviceLocationId)
+                                    .FirstOrDefaultAsync();
+            return currentLocation;
+        }
+
+        public async Task<List<DeviceLocation>> GetDeviceLocationOverCertainTime(string id, DateTime from, DateTime to)
+        {
+            var locationRange = await dbSet.Where(x => x.DeviceId == id)
+                                    .Where(x => x.TimeStamp >= from)
+                                     .Where(x => x.TimeStamp <= to)
+                                    .ToListAsync();
+            return locationRange;
+        }
     }
 }

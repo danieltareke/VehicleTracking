@@ -10,5 +10,6 @@ namespace LocationView.Core.Interfaces.Repository
     public interface IDeviceInfoRepository : IGenericRepository<DeviceInfo>
     {
         Task<DeviceInfo> GetByDeviceId(string id);
+        
     }
 }

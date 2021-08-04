@@ -9,6 +9,8 @@ namespace LocationView.Core.Interfaces.Repository
 {
     public interface IDeviceLocationRepository : IGenericRepository<DeviceLocation>
     {
-        
+        Task<DeviceLocation> GetDeviceCurrentLocation(string id);
+        Task<List<DeviceLocation>> GetDeviceLocationOverCertainTime(string id,DateTime from, DateTime to);
+
     }
 }

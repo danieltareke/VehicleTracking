@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace LocationView.WebAPI
@@ -27,6 +28,29 @@ namespace LocationView.WebAPI
         {
 
             services.AddControllers();
+
+            //services.AddAuthentication("Bearer")
+            //    .AddJwtBearer("Bearer", options =>
+            //    {
+            //        options.Authority = "https://localhost:5001";
+            //        options.RequireHttpsMetadata = true;
+
+            //        //options.TokenValidationParameters = new TokenValidationParameters
+            //        //{
+            //        //    ValidateAudience = false
+            //        //};
+            //    });
+
+            // adds an authorization policy to make sure the token is for scope 'api1'
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("ApiScope", policy =>
+            //    {
+            //        policy.RequireAuthenticatedUser();
+            //        policy.RequireClaim("scope", "api1");
+            //    });
+            //});
+
 
             services.AddEntityFrameworkNpgsql()
                     .AddDbContext<LocationViewDbContext>(opt => opt

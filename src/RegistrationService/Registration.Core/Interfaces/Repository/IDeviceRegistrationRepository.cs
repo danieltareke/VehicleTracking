@@ -9,5 +9,6 @@ namespace Registration.Core.Interfaces.Repository
 {
     public interface IDeviceRegistrationRepository : IGenericRepository<DeviceRegistration>
     {
+        Task<DeviceRegistration> GetByDeviceId(string id);
     }
 }

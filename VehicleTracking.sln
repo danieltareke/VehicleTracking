@@ -4,8 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{482178A3-0012-4954-AA2B-32F4795691A8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{55FE27DA-5377-43F2-9C0D-ACBCD4BCF559}"
+	ProjectSection(SolutionItems) = preProject
+		architecture.JPG = architecture.JPG
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RegistrationService", "RegistrationService", "{14A1574B-9A24-4612-8C91-895329BA4F09}"
 EndProject
@@ -32,6 +34,16 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Registration.WebAPI", "src\RegistrationService\Registration.WebAPI\Registration.WebAPI.csproj", "{84C2448D-CBB5-436B-8E32-36FABF69B0C7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageModel", "src\MessageModel\MessageModel.csproj", "{28FF6B4D-44C3-4867-AAA2-4F92EF75C4AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIGateway", "src\APIGateway\APIGateway.csproj", "{47542E5B-AC82-4FA2-AEA9-9773DBE411A5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServerAspNetIdentity", "src\IdentityServerAspNetIdentity\IdentityServerAspNetIdentity.csproj", "{8EA3C4C9-FBBD-4209-A76D-D8B4A821F2A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED40D562-3318-4DCA-8408-7893364FA241}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +91,14 @@ Global
 		{28FF6B4D-44C3-4867-AAA2-4F92EF75C4AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28FF6B4D-44C3-4867-AAA2-4F92EF75C4AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28FF6B4D-44C3-4867-AAA2-4F92EF75C4AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47542E5B-AC82-4FA2-AEA9-9773DBE411A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47542E5B-AC82-4FA2-AEA9-9773DBE411A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47542E5B-AC82-4FA2-AEA9-9773DBE411A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47542E5B-AC82-4FA2-AEA9-9773DBE411A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EA3C4C9-FBBD-4209-A76D-D8B4A821F2A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EA3C4C9-FBBD-4209-A76D-D8B4A821F2A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA3C4C9-FBBD-4209-A76D-D8B4A821F2A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EA3C4C9-FBBD-4209-A76D-D8B4A821F2A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +117,8 @@ Global
 		{B979635D-7587-4E40-B6AB-634F7311CE60} = {F0E10D30-4078-44C5-8BAC-099BF5A3C3AB}
 		{84C2448D-CBB5-436B-8E32-36FABF69B0C7} = {14A1574B-9A24-4612-8C91-895329BA4F09}
 		{28FF6B4D-44C3-4867-AAA2-4F92EF75C4AF} = {482178A3-0012-4954-AA2B-32F4795691A8}
+		{47542E5B-AC82-4FA2-AEA9-9773DBE411A5} = {482178A3-0012-4954-AA2B-32F4795691A8}
+		{8EA3C4C9-FBBD-4209-A76D-D8B4A821F2A5} = {482178A3-0012-4954-AA2B-32F4795691A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A159F0CE-5F2B-4576-B507-CA6B9A03072B}

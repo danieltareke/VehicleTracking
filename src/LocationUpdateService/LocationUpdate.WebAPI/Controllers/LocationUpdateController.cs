@@ -23,11 +23,20 @@ namespace LocationUpdate.WebAPI.Controllers
 
         // POST api/<LocationUpdateController>
         [HttpPost]
+        [Route("[action]")]
         public async Task<IActionResult> UpdateLocation([FromBody] Location location)
         {
-            await _publishEndpoint.Publish<Location>(location);
+            //set timestampe
+            location.TimeStamp = System.DateTime.UtcNow;
 
-            return Ok();
+            if (ModelState.IsValid)
+            {
+
+                await _publishEndpoint.Publish<Location>(location);
+
+                return Ok();
+            }
+            return new JsonResult("Data is not complete") { StatusCode = 500 };
         }
 
         
